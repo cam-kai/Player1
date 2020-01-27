@@ -1,0 +1,8 @@
+django==2.2
+pillow
+django-crispy-forms
+djangorestframework
+django-pwa==1.0.6
+fcm-django
+social-auth-app-django
+django-baton

@@ -1,0 +1,82 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script>
+    function eliminarVideojuego(id) {
+        Swal.fire({
+            title: '¿Estas seguro?',
+            text: "Esta acción no se puede deshacer",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Eliminar!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.value) {
+                //para eliminar la pelicula debemos redirigir al usuario
+                //hacia la ruta de eliminar
+                window.location.href = '/eliminar-videojuego/'+id+'/';
+            }
+        })
+    }
+</script> 
+
+{% endblock js %}
+
+{% block contenido %}
+
+<div class="container">
+    
+<br>
+<h1>Listado de videojuegos</h1>
+<br>
+<div class="d-flex justify-content-between flex-column flex-md-row">
+    <h4>Menor precio = <span class="badge badge-primary" > {{menor_precio.precio__min | default:0 }} </span> </h4>
+    <h4>Mayor precio = <span class="badge badge-danger"> {{mayor_precio.precio__max | default:0}} </span></h4>
+    <h4>Precio promedio = <span class="badge badge-info" > {{precio_promedio.precio__avg | default:0 }} </span></h4>
+    <h4>Suma total de precios = <span class="badge badge-success"> {{sumatoria_precio.precio__sum | default:0}} </span></h4>
+    <h4>Cantidad de videojuegos = <span class="badge badge-warning" > {{cantidad_videojuegos}} </span> </h4>
+</div>
+<div class="form-inline">
+    <form action="" method="get">
+        <input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." value="{{busqueda}}">
+        <input type="submit" value="Buscar" class=" btn btn-primary">
+    </form>
+</div>
+<hr>
+<div class="table-responsive">
+<table class="table table-striped table-hover">
+    <tr>
+        <th>Titulo</th>
+        <th>Genero</th>
+        <th>Plataforma</th>
+        <th>Descripción</th>
+        <th>Caratula</th>
+        <th>Precio</th>
+        <th>Opciones</th>
+    </tr>
+    {% for v in videojuegos %}
+    <tr>
+        <td>{{ v.titulo }}</td>
+        <td>{{ v.genero }}</td>
+        <td>{{ v.plataforma }}</td>
+        <td>{{ v.descripcion | truncatechars:20 }}</td>
+        <td>{{ v.caratula }}</td>
+        <td>{{ v.precio }}</td>
+        <td>
+            <a href="{% url 'modificar_videojuegos' v.id %}" class="btn btn-primary">Modificar</a>
+        
+            <a href="#" onclick="eliminarVideojuego({{v.id}})" class="btn btn-danger">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+</div>
+
+</div>
+
+
+{% endblock contenido %}

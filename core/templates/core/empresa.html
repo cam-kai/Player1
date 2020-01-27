@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %} {% load static %} {% block contenido %}
+<div class="p-3">
+{% for e in empresa %}
+<div class="empresa">
+    <h1>Nuestra empresa</h1>
+    <br>
+    {% if e.historia %}
+    <p> {{e.historia}} </p>
+
+    {% else %}
+    <p>Los origenes de nuestra empresa se remontan hace 20 años , en los cuales en un inicio se encargaban de tener videojuegos
+        arcades en donde nuestros clientes disfrutan de poder jugarlos, con el paso del tiempo la empresa ademas comenzo
+        a adquirir consolas y juegos para estas, y es así como hasta el dia de hoy se ocupa de la venta de consolas, videojuegos
+        e insumos para estos.
+    </p>{% endif %}
+</div>
+<div class="empresa">
+    <h1>Visión empresarial</h1>
+    <br>
+    {% if e.vision %}
+    <p> {{e.vision}} </p>
+    {% else %}
+    <p>Llegar a más lugares de la república de chile e incluso a diferentes partes del mundo, con el mejor servicio a clientes,
+        con los juegos y artículos más nuevos y actualizados y principalmente con la mejor comodidad y accesibilidad que
+        podamos brindar.</p>
+</div>{% endif %}
+<div class="empresa">
+    <h1>Misión empresarial</h1>
+    <br>
+    {% if e.mision %}
+    <p> {{e.mision}} </p>
+    {% else %}
+    <p>Satisfacer las necesidades de las personas interesadas en los videojuegos y articulos de novedad, prestandoles el mejor
+        servicio por parte de todo el personal de la empresa, y manteniendo siempre actualizado nuestro catálogo de juegos
+        y articulos para las diferentes plataformas.</p>
+        {%endif%} {%endfor %}
+    <img src="{% static 'core/img/mision-vision.png' %}" alt="">
+</div>
+</div>
+{% endblock contenido %}

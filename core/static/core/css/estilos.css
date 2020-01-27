@@ -1,0 +1,445 @@
+* {
+    margin:0;
+    padding: 0;
+}
+
+.logo{
+    width: 60px;
+    background-color: none;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.menu{
+    width: 40px;
+    display: none;
+}
+
+body{
+    background-color: #f5f5f5;
+    font-family: "Teko", Verdana, Geneva, Tahoma, sans-serif;
+
+}
+.contenido_home {
+    width: 90%;
+    margin:auto;        
+}
+.comentarios h1, .comentarios h2,.comentarios h3{
+    font-family: "Open Sans";
+}
+
+h1,h2,h3{
+    font-family: "Teko", Verdana, Geneva, Tahoma, sans-serif;
+}
+ 
+.container table {
+    font-family: "Open Sans",Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
+.slider img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.contenedor_productos{
+    width: 90%;
+    min-height: 400px;
+    height: auto;
+}
+
+.videojuego{
+    width: 150px;
+    height: auto;
+    overflow: hidden;
+    display: inline-block;
+    margin-left: 30px;
+    margin-top:30px;
+    flex-direction: row;
+}
+
+.videojuego img{
+    width: 150px;
+    height: 190px;
+    object-fit: cover;
+
+}
+
+.videojuego h4{
+    display: block;
+    text-align: center;
+    background-color: #90caf9;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.trabajadores{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.personas{
+    width: 300px;
+    height: auto;
+    
+    overflow: hidden;
+    display: inline-block;
+    margin: 20px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.personas img{
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    margin-left: 25px;
+    align-items: center;
+    margin-bottom: auto;
+}
+
+.personas h3{
+    text-align: center;
+}
+
+.formulario{
+    width: 100%;
+    min-height: 400px;
+    height: auto;
+    background-color: #90caf9;
+    display: inline-grid;
+    justify-content: center;
+    margin-left: auto;
+}
+
+label.error {
+    color:red;
+}
+
+.empresa{
+    width: 100%;
+    height: auto;
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.empresa p{
+    
+    font-family: "Open Sans",Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.empresa img{
+    width: 70%;
+    height: auto;
+    margin-top: 75px;
+}
+
+.principal {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+}
+
+.indicadores{
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.valores {
+    display: inline-block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.valores img{
+    width: 100px;
+    height: 100px;
+}
+
+.galeria{
+    display: inline-flexbox;
+}
+
+.tienda{
+    justify-content: center;
+    display: contents;
+}
+
+.galeria img{
+    
+    width: 30%;
+    height: 250px;
+    margin: 20px;
+}
+
+.mapa {
+    width: 75%;
+    margin:auto;
+}
+
+.mapa iframe {
+    margin:auto;
+    display: block;
+    width: 100%;
+}
+
+.comentarios h3{
+    text-align: center;
+}
+
+
+header {
+    width: 100%;
+    height: 80px;
+    background: rgb(69,218,194);
+    background: linear-gradient(90deg, rgba(69,218,194,1) 0%, rgba(93,214,246,1) 36%, rgba(27,112,195,1) 100%);
+}
+
+
+
+.navegador{
+    float: right;
+    margin-right: 20px;
+    margin-top: 15px;
+
+}
+
+.navegador li{
+    display: inline-block;
+    color:black;
+    margin-left:10px;
+    padding:10px 0;
+    /*
+    font-family: "Teko", Verdana, Geneva, Tahoma, sans-serif;*/
+}
+
+.navegador a{
+    text-decoration:none;
+    color: #eeeeee;
+    font-size: 24px;
+}
+
+.navegador li:hover {
+    background-color: #039be5;
+    transition: all 0.5s;
+}
+
+footer{
+    width: 100%;
+    height: 95px;
+    margin-top: 20px;
+    align-items: center;
+    background: rgb(69,218,194);
+    background: linear-gradient(90deg, rgba(69,218,194,1) 0%, rgba(93,214,246,1) 36%, rgba(27,112,195,1) 100%);
+}
+
+footer ul{
+    float: right;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+footer li{
+    display: inline-block;
+    margin: 10px;
+}
+
+footer li a{
+    text-decoration: none;
+    color: #eeeeee;
+    font-size: 24px;
+}
+footer a img{
+    margin-top: 20px;
+    
+    
+}
+
+
+
+@media (max-width: 1024px){
+
+    .slider{
+        width: auto;
+    }
+
+    .videojuego{
+        width: 40%;
+        min-height: 300px;
+        height: auto;
+        margin-right: 20px;
+        padding: 8px;
+    }
+
+    .videojuego img{
+        width: 100%;
+        height: 425px;
+        object-fit: cover;
+    }
+
+    .personas{
+        width: 40%;
+        min-height: 100px;
+        height: auto;
+        margin-right: 20px;
+        padding: 10px;
+    }
+
+    .personas img{
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
+
+    .menu{
+        
+        display: block;
+        margin-top:10px;
+        margin-left:15px;
+        position: absolute;
+        cursor: pointer;
+        
+    }
+
+    .navegador{
+        float: none;
+    }
+
+    .navegador li {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    header{
+        min-height: 40px;
+        height: auto;
+    }
+
+    .logo{
+        display: block;
+        margin: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .principal {
+        width: 100%;
+        min-height: 150vh;
+        height: auto;
+    }
+
+    footer{
+        width: 100%;
+        height: auto;
+    }
+
+    footer ul{
+        display: none;
+    }
+    
+}
+
+@media (max-width: 767px){
+
+    .menu{
+        
+        display: block;
+        margin-top:10px;
+        margin-left:15px;
+        position: absolute;
+        cursor: pointer;
+        
+    }
+
+    .navegador{
+        float:none;
+    }
+
+    .galeria img{
+        width: 40%;
+        height: 150px;
+        
+    }
+
+    header{
+        min-height: 40px;
+        height: auto;
+    }
+
+    .navegador li {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    .logo{
+        display: block;
+        margin: auto;
+        padding: 10px;
+    }
+
+    .contenedor_productos{
+        width: auto;
+    }
+
+    .videojuego{
+        width: 80%;
+        margin: auto;
+        margin-left: 20px;
+        margin-top: 40px;
+    }
+
+    .videojuego img{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .personas{
+        width: 80%;
+        height: auto;
+    }
+
+    .personas img{
+        width: 100%;
+        height: auto;
+        margin-left: 20px;
+    }
+
+    .personas h3{
+        text-align: center;
+    }
+
+    .slider{
+        width: auto;
+    }
+
+    .slider img{
+        width: 767px;
+        height: 250px;
+    }
+
+    .indicadores{
+        flex-direction: column;
+        
+    }
+
+
+
+    footer{
+        display: flex;
+        justify-content: center;
+    }
+
+    footer ul{
+        display: none;
+    }
+}

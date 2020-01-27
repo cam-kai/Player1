@@ -1,0 +1,116 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block css %}
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Teko&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
+{% endblock css %}
+{% block js %}
+
+<script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+
+<script>
+$(".slider").bxSlider({
+    mode: 'fade',
+    captions: true,
+
+    auto: true,
+    pause: 3000
+});
+
+</script>
+{% endblock js %}
+{% block contenido %}
+
+<div class="slider">
+    {% for s in slider %}
+        {% if s.imagen %}
+            <div>
+                <img src="{{ s.imagen.url }}" alt="promocion" title="{{ s.texto }}" >
+            </div>
+        {% else %}
+            <div>
+                <img src="{% static 'core/img/mario y sonic olimpiadas 2020.jpg' %}" alt="slider1" title="No te pierdas el juego de estas olimpiadas con un 25% de descuento">
+            </div>
+        {% endif %}
+    {% endfor %}
+    
+</div>
+<div class="contenido_home">
+    <div class="productos">
+        <div class="contenedor_productos">
+            <h1>Videojuegos</h1>
+            <br>
+            
+            {% for v in videojuegos %}
+                {% if v.precio %}
+                <div class="videojuego">
+                    <img src="{{ v.caratula.url }}" alt="destiny">
+                     
+                    <h4>{{v.precio}}</h4>
+                </div>
+                {% else %}
+            
+                    <img src="{% static 'core/img/asscreed.jpg' %}" alt="asscreed">
+                    <h4>$25.990</h4>
+                
+                {% endif %}
+            {% endfor %}
+            
+        </div>
+
+    </div>
+    <div class="comentarios">
+        <h1>Clientes felices</h1>
+        <br>
+        <br>
+        <h3>@Paola2314</h3>
+        <h3>Muy buena atención, fui a comprarle un regalo a mi hermano que le encantan los 
+            juegos de switch y no sabia que regalarle, fui a la tienda y me asesoraron,
+            me atendieron muy bien , y mi hermano quedo encantado , excelente servicio.
+        </h3>
+        <br><br>
+        <h3>@Jorge9846</h3>
+        <h3>Excelente atención, fui a comprar juegos con mi sobrino y mi hijo, y tenian todos
+            los juegos que querian y a un precio realmente económico.
+        </h3>
+        <br><br>
+        <h3>@Cristian0805</h3>
+        <h3>Al fin , estube buscando por casi todo santiago un juego que me gusta mucho
+            pero no lo lograba encontrar para mi xbox, hasta que al fin lo encontre y   
+            a un muy buen precio , ademas de una excelente atención, son lo mejor chicos.
+        </h3>
+        <br><br>
+        
+    </div>
+    <div class="trabajadores">
+        
+        <h1>Nuestro equipo</h1>
+        <div class="personas">
+            <img src="{% static 'core/img/persona 1.jpg' %}" alt="persona1">
+            <h3>Ejecutiva de ventas </h3>
+            <h3>Carolina Venegas</h3>
+            
+        </div>
+        <div class="personas">
+            <img src="{% static 'core/img/persona 2.jpg' %}" alt="persona2">
+            <h3>Ejecutivo de atención al cliente</h3>
+            <h3>Ignacio Fuentes</h3>
+        </div>
+
+        <div class="personas">
+            <img src="{% static 'core/img/persona 3.jpg' %}" alt="persona3">
+            <h3>Vicepresidente</h3>
+            <h3>Ismael Goméz</h3>
+            <br>
+        </div>
+        <div class="personas">
+            <img src="{% static 'core/img/persona 4.jpg' %}" alt="persona4">
+            <h3>Presidenta </h3>
+            <h3>Alejandra Tapia</h3>
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" /> 
+{% endblock css %} 
+
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+{% endblock js %}
+
+{% block contenido %}
+<div class="p-3">
+<br>
+<div class="galeria">
+    <h1>Nuestra tienda</h1>
+    <br>
+    
+    {% for g in galeria %}
+    <div class="tienda">
+        <a href="{{ g.imagen.url }}" data-fancybox="gallery">
+        {% if g.imagen %}
+            
+                <img src="{{ g.imagen.url }}" alt="tienda">
+            
+        {% else %}
+            <a href="{% static 'core/img/tienda 2.jpeg' %}" data-fancybox="gallery">
+                <img src="{% static 'core/img/tienda 2.jpeg' %}" alt="tienda 2">
+            </a>
+        {% endif %}
+    </a>
+    </div>
+    {% endfor %}
+    
+</div>
+
+<div class="ubicanos">
+    <h1>Ubicanos</h1>
+    <br>
+    <div class="mapa">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9285.572316127638!2d-70.60416224346734!3d-33.51534277645583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d06757799979%3A0x913dd02e5daeb4b7!2sMallplaza%20Vespucio!5e0!3m2!1ses-419!2scl!4v1578890071017!5m2!1ses-419!2scl"
+            width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+    </div>
+    <br>
+    <br>
+</div>
+</div>
+{% endblock contenido %}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+    <style>
+        body {background: rgb(69,218,194);
+background: linear-gradient(90deg, rgba(69,218,194,1) 0%, rgba(93,214,246,1) 36%, rgba(27,112,195,1) 100%);
+        }
+    </style>
+</head>
+
+<body>
+    {% load crispy_forms_tags %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+
+                <div class="card p-4 mt-3">
+
+
+                    <h2>Registro de usuario</h2>
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <table>
+                            {{ form | crispy }}
+                        </table>
+                        <a href="{% url 'home' %}">Ir al sitio</a>
+                        <div class="float-right">
+                        <input type="reset" value="Limpiar" class="btn btn-secondary">
+                        <input type="submit" value="Guardar" class="btn btn-outline-primary ">
+                        </div>
+                    </form>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

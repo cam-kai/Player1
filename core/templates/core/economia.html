@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<div class="indicadores">
+    <div class="valores">
+        <img src="{% static 'core/img/pesoChileno.png' %}" alt="">
+        <h2>Valor UF</h2>
+        <h2><div id="valorUF"></div></h2>
+        <div id="valorUF"></div>
+        
+    </div>
+    <div class="valores">
+        <img src="{% static 'core/img/iconoDolar.jpg' %}" alt="">
+        <h2>Valor Dolar</h2>
+        <h2><div id="valorDolar"></div></h2>
+        
+    </div >
+    <div class="valores">
+        <img src="{% static 'core/img/iconoeuro.png' %}" alt="">
+        <h2>Valor Euro</h2>
+        <h2><div id="valorEuro"></div></h2>
+        
+    </div>
+    <div class="valores">
+        <img src="{% static 'core/img/pesoChileno.png' %}" alt="">
+        <h2>Valor UTM</h2>
+        <h2><div id="valorUTM"></div></h2>
+        
+    </div>
+    <div class="valores">
+        <img src="{% static 'core/img/iconoBitcoin.png' %}" alt="">
+        <h2>Valor Bitcoin</h2>
+        <h2><div id="valorBitcoin"></div></h2>
+        
+    </div>
+</div>
+{% endblock contenido %}
+
+{% block js %}
+<script src="{% static 'core/js/economia.js' %}"></script>
+{% endblock js %}

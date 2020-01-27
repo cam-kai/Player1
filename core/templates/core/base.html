@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+{% load pwa %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Player_1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'core/css/estilos.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Teko&display=swap" rel="stylesheet"> 
+    <link rel="icon" href="{% static 'core/img/pac-man.png' %}"> 
+    {% block css %}
+    {% endblock css %}
+    {% progressive_web_app_meta %}
+
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyDH5qX2jtumlAWA7-Jgwa-ic7axrK2vZiI",
+          authDomain: "player1-b169d.firebaseapp.com",
+          databaseURL: "https://player1-b169d.firebaseio.com",
+          projectId: "player1-b169d",
+          storageBucket: "player1-b169d.appspot.com",
+          messagingSenderId: "355274120665",
+          appId: "1:355274120665:web:60965fedfbb9f2f0834dc8"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        
+        //primero debemos decirle a la libreria donde esta el serviceworker
+        let messaging = firebase.messaging();
+
+        //primero debemos decirle a la libreria donde esta el serviceworker
+        navigator.serviceWorker.register('/serviceworker.js')
+        .then(function(serviceworker) {
+
+            messaging.useServiceWorker(serviceworker);
+
+            //solicitamos permiso al usuario para recibir notificaciones push
+            messaging.requestPermission()
+            .then(function() {
+                console.log("permiso concedido");
+                return messaging.getToken();
+            })
+            .then(function(token){
+                //recibimos el token que nos asigna firebase
+                console.log(token);
+
+                //enviaremos el token a django
+                fetch('/save-token/', {
+                    method:'post',
+                    headers:{
+                        'Accept':'application/json',
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify({'token':token})
+                })
+                .then(function(resultado) {
+                    return resultado.json();
+                })
+                .then(function(resultado){
+                    console.log(resultado);
+                });
+
+            })
+            .catch(function() {
+                console.log("el usuario no quiere notificaciones");
+            });
+
+        });
+
+        //programamos la recepcion de las notificaciones
+        messaging.onMessage(function(payload) {
+            console.log(payload);
+
+            let title = payload.notification.title;
+
+            let options = {
+                body:payload.notification.body,
+                icon:payload.notification.icon
+            };
+
+            //mostramos la notificacion al usuario
+            new Notification(title, options);
+        });
+        
+
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <img src="{% static 'core/img/menu.png' %}" alt="menu" id="menu" class="menu">
+        <a href="{% url 'home' %}">
+            <img src="{% static 'core/img/pac-man.png' %}" alt="logo" id="logo" class="logo">
+        </a>
+        <ul class="navegador" id="navegador">
+            <li>
+                <a href="{% url 'galeria' %}">Galeria</a>
+            </li>
+            <li>
+                <a href="{% url 'empresa' %}">¿Quienes Somos?</a>
+            </li>
+            <li>
+                <a href="{% url 'contactenos' %}">Contactenos</a>
+            </li>
+            <li>
+                <a href="{% url 'economia' %}">Economia</a>
+            </li>
+            {% if perms.core.view_videojuego %}
+            <li>
+                <a href="{% url 'listado_videojuegos' %}">Listado</a>
+            </li>
+            {% endif %}
+            {% if perms.core.add_videojuego %}
+            <li>
+                <a href="{% url 'agregar_videojuegos' %}">Agregar</a>
+            </li>
+            
+            {% endif %}
+            {% if user.is_authenticated %}
+            <li>
+                <a href="">Bienvenido {{user.first_name |default:user.username}} </a>
+            </li>
+
+            <li>
+                <a href="{% url 'logout' %}">Cerrar sesión</a>
+            </li>
+            
+            
+            {% else %}
+            <li>
+                <a href="{% url 'login' %}">Iniciar sesión</a>
+                
+            </li>
+            <li><a href="{% url 'registro' %}">Registrate</a></li>
+            {% endif %}
+        </ul>
+    </header>
+
+    <div class="principal">
+       
+        {% block contenido %}
+        
+        {% endblock contenido %}
+       
+    </div>
+        <footer>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'core/img/pac-man.png' %}" alt="logo" id="logo" class="logo">
+            </a>
+            <ul>
+                <li>
+                    <a href="{% url 'galeria' %}">Galeria</a>
+                </li>
+                <li>
+                    <a href="{% url 'empresa' %}">¿Quienes somos?</a>
+                </li>
+                <li>
+                    <a href="{% url 'contactenos' %}">Contactenos</a>
+                </li>
+                <li>
+                    <a href="{% url 'economia' %}">Economia</a>
+                </li>
+                
+            </ul>
+
+        </footer>
+</body>
+
+{% block js %}
+{% endblock js %}
+<script src="{% static 'core/js/home.js' %}"></script>
+</html>
