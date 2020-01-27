@@ -60,12 +60,20 @@ class GaleriaAdmin(admin.ModelAdmin):
     search_fields =['imagen']  
     list_per_page = 10
 
+class Tipo_contactoAdmin(admin.ModelAdmin):
+    search_fields = ['tipo_contacto']
+    list_per_page = 10
+
+class ContactenosAdmin(admin.ModelAdmin):
+    search_fields = ['rut']
+    list_per_page = 10
+
 
 admin.site.register(Genero, GeneroAdmin)
 admin.site.register(Plataforma, PlataformaAdmin)
 admin.site.register(Videojuego, VideojuegoAdmin)
 admin.site.register(Slider, SliderAdmin)
 admin.site.register(Galeria, GaleriaAdmin)
-admin.site.register(Tipo_contacto)
-admin.site.register(Contactenos)
+admin.site.register(Tipo_contacto,Tipo_contactoAdmin)
+admin.site.register(Contactenos, ContactenosAdmin)
 admin.site.register(Empresa)
