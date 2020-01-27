@@ -42,6 +42,12 @@ class Galeria(models.Model):
 
 class Tipo_contacto(models.Model):
     tipo_contacto = models.CharField(max_length=20)
+
+    class Meta:
+        verbose_name = "Tipo contacto"
+        verbose_name_plural = "Tipo contacto"
+
+
     def __str__(self):
         return self.tipo_contacto
 
@@ -53,7 +59,10 @@ class Contactenos(models.Model):
     asunto = models.CharField(max_length=80)
     tipo_contacto = models.ForeignKey(Tipo_contacto, on_delete= models.CASCADE)
     mensaje = models.TextField(null=True,blank=True,max_length=200)
-
+    
+    class Meta:
+        verbose_name = "Contactenos"
+        verbose_name_plural = "Contactenos"
     def __str__(self):
         return self.nombre
 
