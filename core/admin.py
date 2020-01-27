@@ -11,7 +11,7 @@ class VideojuegoAdmin(admin.ModelAdmin):
     list_filter = ['genero','plataforma']    
     list_per_page = 10
 
-    def save_model(self,request, obj,form,change):
+    def save_model(self,request,obj,form,change):
         if not change:
             dispositivos = FCMDevice.objects.all()
             dispositivos.send_message(
@@ -65,7 +65,7 @@ class Tipo_contactoAdmin(admin.ModelAdmin):
     list_per_page = 10
 
 class ContactenosAdmin(admin.ModelAdmin):
-    search_fields = ['rut']
+    search_fields = ['nombre']
     list_per_page = 10
 
 

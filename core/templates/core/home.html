@@ -44,17 +44,17 @@ $(".slider").bxSlider({
             <br>
             
             {% for v in videojuegos %}
-                {% if v.precio %}
+                {% if v.caratula %}
                 <div class="videojuego">
                     <img src="{{ v.caratula.url }}" alt="destiny">
                      
                     <h4>{{v.precio}}</h4>
                 </div>
                 {% else %}
-            
+                <div class="videojuego">
                     <img src="{% static 'core/img/asscreed.jpg' %}" alt="asscreed">
                     <h4>$25.990</h4>
-                
+                </div>
                 {% endif %}
             {% endfor %}
             

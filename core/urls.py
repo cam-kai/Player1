@@ -20,5 +20,5 @@ urlpatterns = [
     path('eliminar-videojuego/<id>/', eliminar_videojuego, name= "eliminar_videojuego"),
     path('registro/', registro, name="registro"),
     path('api/', include(router.urls)),
-    path('save-token/', save_token, name="save_token"),
+    path('save-token/',save_token, name="save_token"),
 ]
