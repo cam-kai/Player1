@@ -189,7 +189,7 @@ def agregar_videojuego(request):
             dispositivos = FCMDevice.objects.all()
             dispositivos.send_message(
                 title= "Se ha agregado un nuevo videojuego ",
-                body = f"Se agrego {formulario.cleaned_data['titulo']}",
+                body = f"Se agregó: {formulario.cleaned_data['titulo']}",
                 icon = "/static/core/img/pac-man.png",
             )
 

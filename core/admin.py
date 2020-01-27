@@ -16,13 +16,31 @@ class VideojuegoAdmin(admin.ModelAdmin):
             dispositivos = FCMDevice.objects.all()
             dispositivos.send_message(
                 title = "Se ha agregado un nuevo videojuego",
-                body = f"Se agrego: {obj.titulo}",
+                body = f"Se agregó: {obj.titulo}",
                 icon = "/static/core/img/pac-man.png"
             )
         super().save_model(request,obj,form,change)
 
+
+    def delete_model(self,request,obj):
+        dispositivos = FCMDevice.objects.filter(user__is_superuser=True)
+        dispositivos.send_message(
+            title = "Se ha eliminado un videojuego",
+            body = f"Se eliminó: {obj.titulo}",
+            icon = "/static/core/img/pac-man.png",
+        )
+        super().delete_model(request,obj)
     
     
+    def delete_queryset(self,request,queryset):
+        cantidad = queryset.count()
+        dispositivos = FCMDevice.objects.filter(user__is_superuser=True)
+        dispositivos.send_message(
+            title = "Se ha realizado una eliminación masiva",
+            body = f"Se han eliminado un total de {cantidad} de videojuegos",
+            icon = "/static/core/img/pac-man.png",
+        )
+        super().delete_queryset(request,queryset)
 
 
 class GeneroAdmin(admin.ModelAdmin):
