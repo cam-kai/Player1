@@ -145,7 +145,7 @@ def galeria(request):
     data = {
         'galeria': galeria
     }
-    return render(request, 'core/galeria.html',data)
+    return render(request,'core/galeria.html',data)
 
 @permission_required('core.view_videojuego')
 def listado_videojuegos(request):
